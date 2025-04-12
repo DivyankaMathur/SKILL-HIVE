@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkillHive - Sign In</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .form-section {
+      width: 50%;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .image-section {
+      width: 50%;
+      background-image: url('img.jpg'); /* Same image as Sign Up */
+      background-size: cover;
+      background-position: center;
+    }
+
+    .logo {
+      width: 150px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      color: #333;
+      font-weight: normal;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin: 10px 0 30px;
+    }
+
+    label {
+      font-size: 14px;
+      margin: 15px 0 5px;
+      display: block;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+      border: 2px solid #dcdcdc;
+      border-radius: 5px;
+    }
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+
+    .signin-btn {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #347af0;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .signin-btn:hover {
+      background-color: #2a64cc;
+    }
+
+    .or-text {
+      text-align: center;
+      margin: 20px 0 10px;
+      color: #666;
+    }
+
+    .social-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .social-btn {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 0 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .social-btn img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .signin-link {
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .signin-link a {
+      color: #347af0;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-section">
+      <img src="skillhive.png" alt="SkillHive Logo" class="logo" />
+      <h2>Welcome back</h2>
+      <h1>Sign In to SkillHive</h1>
+      
+      <!-- Sign In Form -->
+      <form id="signin-form">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="example@email.com" required>
+        
+        <label for="password">Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="password" required>
+          <span class="toggle-password" onclick="togglePassword()">👁️</span>
+        </div>
+
+        <button type="submit" class="signin-btn">Sign In</button>
+      </form>
+
+      <p class="or-text">or sign in with</p>
+      <div class="social-buttons">
+        <button class="social-btn"><img src="https://img.icons8.com/ios-filled/24/facebook-new.png"/> Facebook</button>
+        <button class="social-btn"><img src="https://img.icons8.com/ios-filled/24/google-logo.png"/> Google</button>
+        <button class="social-btn"><img src="https://img.icons8.com/ios-filled/24/mac-os.png"/> Apple</button>
+      </div>
+
+      <p class="signin-link">Don't have an account? <a href="signup.html">Sign up</a></p>
+    </div>
+    
+    <div class="image-section"></div>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+    }
+
+    // Handle sign-in form submission
+    document.getElementById('signin-form').addEventListener('submit', async function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const response = await fetch('http://127.0.0.1:5000/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password })
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+          alert('Sign-in successful!');
+          // You can redirect to dashboard or homepage here
+        } else {
+          alert(`Error: ${result.message}`);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Something went wrong. Please try again.');
+      }
+    });
+  </script>
+</body>
+</html>
+<p class="signin-link">Don't have an account? <a href="start.html">Sign up</a></p>

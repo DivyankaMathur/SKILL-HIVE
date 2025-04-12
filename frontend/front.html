@@ -1,0 +1,212 @@
+Front
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Questionnaire for Career Guidance</title>
+  <style>
+    body {
+      background-color: #f0f8ff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background-color: #ffffff;
+      padding: 40px;
+      margin-top: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-size: 50px;
+      font-style: italic;
+      text-align: center;
+      color: #333;
+    }
+    h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 30px;
+      color: #222;
+    }
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    .checkbox-group label,
+    .radio-group label {
+      display: block;
+      margin-top: 8px;
+      font-weight: normal;
+    }
+    button {
+      margin-top: 30px;
+      background-color: #007bff; /* Changed to blue */
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+    }
+    .result {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #e0f7fa;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Questionnaire for Career Guidance</h1>
+    <form id="careerForm">
+      <!-- Section 1: Personal Information -->
+      <h2>Section 1: Personal Information</h2>
+      <label>What is your name?</label>
+      <input type="text" name="name" required />
+
+      <label>How old are you?</label>
+      <select name="age" required>
+        <option value="15-18">15-18</option>
+        <option value="19-25">19-25</option>
+        <option value="26-35">26-35</option>
+        <option value="36+">36+</option>
+      </select>
+
+      <label>Do you have access to any form of educational support (e.g., special education, tutoring)?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="edu_support" value="yes"> Yes</label>
+        <label><input type="radio" name="edu_support" value="no"> No</label>
+        <label><input type="radio" name="edu_support" value="not_sure"> Not Sure</label>
+      </div>
+
+      <label>Do you have any work experience? (If yes, please briefly describe.)</label>
+      <div class="radio-group">
+        <label><input type="radio" name="work_exp" value="yes"> Yes</label>
+        <textarea name="work_desc" rows="2" placeholder="Describe your experience..."></textarea>
+        <label><input type="radio" name="work_exp" value="no"> No</label>
+      </div>
+
+      <!-- Section 2: Interests and Hobbies -->
+      <h2>Section 2: Interests and Hobbies</h2>
+      <label>What are your favorite activities?</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="fav_activities" value="Reading"> Reading</label>
+        <label><input type="checkbox" name="fav_activities" value="Drawing"> Drawing</label>
+        <label><input type="checkbox" name="fav_activities" value="Playing sports"> Playing sports</label>
+        <label><input type="checkbox" name="fav_activities" value="Cooking"> Cooking</label>
+        <label><input type="checkbox" name="fav_activities" value="Listening to music"> Listening to music</label>
+        <label><input type="checkbox" name="fav_activities" value="Helping others"> Helping others</label>
+        <label><input type="checkbox" name="fav_activities" value="Watching TV"> Watching TV</label>
+        <label><input type="checkbox" name="fav_activities" value="Using the computer"> Using the computer</label>
+        <label><input type="text" placeholder="Other..." /></label>
+      </div>
+
+      <h2>Section 3: Strengths and Skills</h2>
+      <label>Which of the following do you feel you are good at?</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" value="Solving problems"> Solving problems</label>
+        <label><input type="checkbox" value="Drawing or crafting"> Drawing or crafting</label>
+        <label><input type="checkbox" value="Listening to others"> Listening to others</label>
+        <label><input type="checkbox" value="Working with numbers"> Working with numbers</label>
+        <label><input type="checkbox" value="Playing sports"> Playing sports</label>
+        <label><input type="checkbox" value="Using technology"> Using technology</label>
+        <label><input type="checkbox" value="Cooking or making things"> Cooking or making things</label>
+        <label><input type="checkbox" value="Helping others"> Helping others</label>
+        <label><input type="text" placeholder="Other..." /></label>
+      </div>
+
+      <h2>Section 4: Support and Challenges</h2>
+      <label>Would you prefer working alone or with others?</label>
+      <select name="work_style" required>
+        <option value="alone">Alone</option>
+        <option value="with_others">With others</option>
+      </select>
+
+      <h2>Section 5: Career Preferences</h2>
+      <label>What type of work environment would you prefer?</label>
+      <select name="work_env" required>
+        <option value="Office">Office</option>
+        <option value="Outdoors">Outdoors</option>
+        <option value="Home">At home</option>
+        <option value="Team">In a team</option>
+        <option value="Alone">Alone</option>
+      </select>
+
+      <label>Would you like a job where you work with people, or one where you work more with things?</label>
+      <select name="work_type" required>
+        <option value="People">People</option>
+        <option value="Things">Things</option>
+        <option value="Both">Both</option>
+        <option value="Neither">Neither</option>
+      </select>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <div id="careerResult" class="result" style="display: none;">
+      <h3>Your Recommended Career:</h3>
+      <p id="careerRecommendation"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("careerForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      
+      const form = new FormData(event.target);
+      const answers = {};
+      form.forEach((value, key) => {
+        answers[key] = value;
+      });
+
+      let recommendedCareer = '';
+
+      // Sample Career Guidance Logic
+      if (answers.work_style === 'alone' && answers.work_env === 'Home') {
+        recommendedCareer = 'Freelance Web Developer';
+      } else if (answers.work_style === 'with_others' && answers.work_env === 'Team') {
+        recommendedCareer = 'Project Manager';
+      } else if (answers.fav_activities && answers.fav_activities.includes('Helping others')) {
+        recommendedCareer = 'Social Worker';
+      } else if (answers.fav_activities && answers.fav_activities.includes('Playing sports')) {
+        recommendedCareer = 'Professional Athlete';
+      } else if (answers.work_type === 'People') {
+        recommendedCareer = 'Teacher';
+      } else if (answers.work_type === 'Things') {
+        recommendedCareer = 'Engineer';
+      } else {
+        recommendedCareer = 'Software Developer';
+      }
+
+      // Display result
+      document.getElementById("careerRecommendation").innerText = recommendedCareer;
+      document.getElementById("careerResult").style.display = "block";
+    });
+  </script>
+</body>
+</html>
+
+
