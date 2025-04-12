@@ -25,7 +25,7 @@ For educators and mentors to monitor student progress and provide support.
 🧰 Tech Stack
 -Frontend: HTML, CSS, JavaScript (accessibility-first UI)
 -AI Layer: OpenAI
--Backend: Node.js / FastAPI / Firebase / Supabase (for syncing, quiz processing, and storage)
+-Backend: Node.js / FastAPI / Python / Firebase / Supabase (for syncing, quiz processing, and storage)
 -Styling: TailwindCSS
 -Designs: Figma
 
